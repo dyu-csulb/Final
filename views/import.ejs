@@ -1,0 +1,41 @@
+ 
+<%- include("../views/shared/_header.ejs") -%>
+<script src="js/ui/ui-import.js"></script>
+<script src="js/ui/ui-total.js"></script>
+
+<form >
+<div>
+    <br/>
+    <h3>Import Customer List</h3>
+    <hr/>
+    <div>     
+        <div class="row">
+            <div class="col-6 mt-1">
+                <label id="lblTotal"></label>
+                <label>Select a file with customers for database insert.</label>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-3">
+                <input type="file" name="filename" required><p></p>
+            </div>
+            <div class="col-6 mt-1">
+                <button type="submit" class="btn btn-primary btn-sm">Import Customer File</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="summary">
+                    <hr/>
+                    <h3> Import Summary</h3>
+                    <hr/>
+                   <label id="result"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<%- include("../views/shared/_footer.ejs") -%>

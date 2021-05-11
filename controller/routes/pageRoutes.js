@@ -16,6 +16,14 @@ router.get("/AddCustomer", (req, res) => {
   res.render("addCustomer");
 });
 
+router.get("/Import", (req, res) => { 
+  res.render("import");
+});
+
+router.get("/Export", (req, res) => { 
+  res.render("export");
+});
+
 
 
 module.exports = router;

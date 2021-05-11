@@ -1,0 +1,24 @@
+
+    .my-label {
+        text-align: right;
+    }
+
+    .my-fieldset {
+        border: 1px solid lightgrey;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .my-row {
+        padding: 5px;
+    }
+
+    .swal-size-sm 
+    {
+       font-size: 12px !important;
+    }
+
+    .required::before {
+        color:red;
+        content:'* '
+    }

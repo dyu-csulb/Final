@@ -16,7 +16,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static('public'))
 app.use('/css',express.static(__dirname + 'public/css'))
-app.use('/js',express.static(__dirname + 'public/js'))
+app.use('/js',express.static(__dirname + 'public/js/ui'))
 app.use(express.urlencoded({ extended: false }));
 
 /*==================
@@ -25,25 +25,29 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', require('./controller/routes/pageRoutes'));
 app.use('/ManageCustomer', require('./controller/routes/pageRoutes'));
 app.use('/AddCustomer', require('./controller/routes/pageRoutes'));
+app.use('/Export', require('./controller/routes/pageRoutes'));
+app.use('/Import', require('./controller/routes/pageRoutes'));
 
 /*==================
   API Routes
 ===================*/
-// app.use('/api/search', require('./controller/api/search'));
-// app.use('/api/delete', require('./controller/api/delete'));
-// app.use('/api/update', require('./controller/api/update'));
-// app.use('/api/add', require('./controller/api/add'));
+app.use('/api/search', require('./controller/api/search'));
+app.use('/api/total', require('./controller/api/total'));
+app.use('/api/delete', require('./controller/api/delete'));
+app.use('/api/update', require('./controller/api/update'));
+app.use('/api/add', require('./controller/api/add'));
+app.use('/api/maxId', require('./controller/api/maxId'));
 
 /*==================
   Import/Export .csv file
 ===================*/
-// app.use('/ExportFile', require('./controller/routes/export'));
-// app.use('/ImportFile', require('./controller/routes/import'));
+app.use('/ExportFile', require('./controller/routes/export'));
+app.use('/ImportFile', require('./controller/routes/import'));
 
 
-// app.use(function(req, res) {
-//   res.status(404).send({url: req.originalUrl + ' not found'})
-// });
+app.use(function(req, res) {
+  res.status(404).send({url: req.originalUrl + ' not found'})
+});
 
 /*==================
   Start Express Server
