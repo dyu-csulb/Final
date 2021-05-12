@@ -10,36 +10,41 @@ const pool = new Pool({
 });
 
 
-const insertCustomer = async (customer) => {
+const insertBooks = async (books) => {
     // Will accept either a product array or product object
-    if (customer instanceof Array) {
-        params = customer;
+    if (books instanceof Array) {
+        params = books;
     } else {
-        params = Object.values(customer);
+        params = Object.values(books);
     };
 
     let numFailed = 0;
     let numInserted = 0;
     let errorMessage = "";
     
-    const sql = "INSERT INTO CUSTOMER (cusId, cusFname, cusLname, cusState, cusSalesYTD, cusSalesPrev) values ($1,$2,$3,$4,$5,$6)"
+    const sql = "INSERT INTO book (book_id, title, total_pages, rating, isbn, published_date) VALUES ($1,$2,$3,$4,$5,$6)"
 
-    for (cust of customer) {
-        params = cust.split(",");
+    for (book of books) {
+        params = book.split(",");
 
-        await pool.query(sql, params)
+        let params2 = [] 
+
+        params2.push(params[0],params[1],params[2],params[3],params[4]=="Null" ? null : params[4], params[5]=="Null" ? null : params[5])
+       // console.log(params2)
+        await pool.query(sql, params2)
             .then(res => {
                     numInserted++;
             })
             .catch(err => {
                 numFailed++;
-                errorMessage += "Customer ID: " + params[0] + " - " + err + '\n'
+                errorMessage += "Book ID: " + params[0] + " - " + err + '\n'
             });
     };
     total = Number(numInserted) + Number(numFailed)
     message = "Records Processed: " + total + '\n' + 
     "Records Inserted Successfully: " + numInserted + '\n' +   
     "Records Not Inserted: " + numFailed + '\n' +  '\n' +  
+    //"Resulting number of books in database: " + numFailed + '\n' +  '\n' +  
     "Errors: " + '\n' +  errorMessage
     
     return message;
@@ -47,4 +52,4 @@ const insertCustomer = async (customer) => {
 };
 
 // Add this at the bottom
-module.exports.insertCustomer = insertCustomer;
+module.exports.insertBooks = insertBooks;

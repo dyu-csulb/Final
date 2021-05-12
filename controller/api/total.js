@@ -20,7 +20,7 @@ const pool = new Pool({
   API Routes
 ===================*/
 router.get("/", (req, res) => {
-const sql = "SELECT count(*) as Total FROM CUSTOMER";
+const sql = "SELECT count(*) as Total FROM book";
 pool.query(sql, [], (err, result) => {
     var message = "";
     var data = {};

@@ -29,7 +29,7 @@ router.post("/",  upload.single('filename'), async (req, res) => {
   const buffer = req.file.buffer; 
   const lines = buffer.toString().split(/\r?\n/);
 
-  await repo.insertCustomer(lines)
+  await repo.insertBooks(lines)
   .then(result => {
     res.send(message);
   });

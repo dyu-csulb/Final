@@ -1,0 +1,51 @@
+<%- include("../views/shared/_header.ejs") -%>
+<script src="js/ui/ui-sumOfSeries.js"></script>
+<script src="js/ui/ui-common.js"></script>
+<div>
+    <br/>
+    <h3>Calculate Sum of Series</h3>
+    <hr/>
+    <div style="width: 600px;">     
+        <div class="row my-row">
+            <div class="col-4 my-label mt-2">
+                <label class="required">
+                    Enter Starting Number:
+                </label> 
+            </div>
+            <div class="col-4">
+                <input type="number"  class="form-control input-sm" id="txtStartNum">
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col-4 my-label mt-2">
+                <label class="required">
+                    Enter Ending Number:
+                </label> 
+            </div>
+            <div class="col-4">
+                <input type="number" required class="form-control input-sm" id="txtEndNum">
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col-4 my-label mt-2">
+                <label class="required">
+                    Enter Increment:
+                </label> 
+            </div>
+            <div class="col-4">
+                <input type="number"  class="form-control input-sm" id="txtIncrement">
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col-8 mt-2">
+                <label id="lblMessage"></label>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <label style="color: red; margin-left: 50px !important; font-size: 12px; font-weight: bold;" class="required"> Required Fields</label>&nbsp;&nbsp;
+    <button id="btnReset" type="button" onclick="resetAddNew()" class="btn btn-secondary btn-sm">Reset</button>
+    <button id="btnSave" type="button" onclick="validate()" class="btn btn-primary btn-sm">Calculate Sum</button>
+</div>
+
+<%- include("../views/shared/_footer.ejs") -%>
