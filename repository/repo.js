@@ -40,6 +40,11 @@ const insertBooks = async (books) => {
                 errorMessage += "Book ID: " + params[0] + " - " + err + '\n'
             });
     };
+
+    /*================================================
+    I missed a few requirements here, mainly getting the new total, ran out of time. 
+    ==================================================*/ 
+
     total = Number(numInserted) + Number(numFailed)
     message = "Records Processed: " + total + '\n' + 
     "Records Inserted Successfully: " + numInserted + '\n' +   
